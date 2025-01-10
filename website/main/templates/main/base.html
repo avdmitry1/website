@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="{% static 'favicons/favicon.ico' %}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Website{% endblock title %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+
+<body>
+    <header class="header sticky-top">
+        <div class="container header-container d-flex justify-content-between">
+            <nav class="header-nav pt-4">
+                <ul class="header-list d-flex">
+                    <li><a href="/" class="nav-a m-3">Home</a></li>
+                    <li><a href="#" class="nav-a m-3">Shop</a></li>
+                </ul>
+            </nav>
+            <div class="header-logo">
+                <a href="/"><img src="{% static 'img/obrii1.png' %}" alt="Логотип Obrii" class="heavy-logo"></a>
+            </div>
+            <div class="header-profile">
+                <a href="#" class="m-3">LOGIN</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}
+        <!-- Default content can go here -->
+        {% endblock content %}
+    </main>
+
+    <footer>
+        <img src="{% static 'img/font1.png' %}" class="frame1" alt="Фон сайта">
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>

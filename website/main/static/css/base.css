@@ -1,0 +1,32 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heavy-logo {
+    max-width: 150px;
+    /* Размер логотипа */
+    height: auto;
+    /* Сохраняем пропорции */
+}
+
+.header-logo img {
+    max-width: 150px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    /* Равномерное распределение содержимого */
+    align-items: center;
+    /* Центрирование по вертикали */
+    min-height: 80px;
+    /* Указание минимальной высоты */
+    padding: 0 20px;
+    /* Отступы для элементов */
+}
