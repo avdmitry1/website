@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrii</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="logo">
+                <img src="{% static 'img/obrii1.png' %}" alt="Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'main:index' %}">Main</a></li>
+                    <li><a href="{% url 'main:releases' %}">Releases</a></li>
+                    <li><a href="{% url 'main:artists' %}">Artists</a></li>
+                    <li><a href="{% url 'main:events' %}">Events</a></li>
+                    <li><a href="{% url 'main:contacts' %}">Contacts</a></li>
+                    <li><a href="{% url 'main:about' %}">About</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section class="hero">
+                <h1>Obrii</h1>
+                <p>The pulse of Ukraine in the rhythm of techno</p>
+            </section>
+        </main>
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2024 Obrii. All rights reserved</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/obrii" target="_blank">Instagram</a>
+                    <a href="https://soundcloud.com/obrii" target="_blank">SoundCloud</a>
+                    <a href="https://youtube.com/obrii" target="_blank">YouTube</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

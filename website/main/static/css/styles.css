@@ -1,44 +1,200 @@
-/* styles.css */
+/* Общие стили для body */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: rgb(83, 107, 129);
+    /* Основной цвет фона */
+    color: #FFFFFF;
+    /* Белый цвет текста */
 }
 
+/* Стили для шапки */
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    /* Логотип слева, меню справа */
+    align-items: center;
+    /* Выравнивание по вертикали */
+    padding: 10px 20px;
+    /* Отступы внутри шапки */
+    background-color: rgb(109, 132, 152);
+    /* Цвет фона шапки */
+}
+
+/* Стили для логотипа */
+.logo img {
+    height: 50px;
+    /* Высота логотипа */
+}
+
+/* Стили для навигационного меню */
+nav {
+    flex-grow: 1;
+    /* Занимает всё свободное пространство */
 }
 
 nav ul {
+    display: flex;
+    justify-content: center;
+    /* Центрирование по горизонтали */
+    align-items: center;
+    /* Центрирование по вертикали */
     list-style: none;
+    /* Убираем маркеры списка */
     padding: 0;
+    /* Убираем внутренние отступы */
+    margin: 0;
+    /* Убираем внешние отступы */
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 1rem;
+    margin: 0 10px;
+    /* Отступы между пунктами меню */
 }
 
 nav ul li a {
-    color: #fff;
     text-decoration: none;
+    /* Убираем подчёркивание ссылок */
+    color: #FFFFFF;
+    /* Белый цвет текста */
+    font-weight: bold;
+    /* Жирный шрифт */
+    transition: color 0.3s ease;
+    /* Плавное изменение цвета */
 }
 
+/* Эффект при наведении на ссылки */
+nav ul li a:hover {
+    color: #a8dbdc;
+    /* Золотой цвет при наведении */
+}
+
+/* Стили для основного контента */
 main {
-    padding: 2rem;
+    padding: 20px;
+    /* Отступы внутри основного контента */
     text-align: center;
+    /* Центрирование текста */
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+/* Стили для секции "Герой" */
+.hero {
+    background-color: rgb(109, 132, 152);
+    /* Цвет фона */
+    padding: 40px 20px;
+    /* Отступы внутри секции */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Тень текста */
 }
+
+.hero h1 {
+    font-size: 3rem;
+    /* Размер заголовка */
+    margin-bottom: 10px;
+    /* Отступ снизу */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    /* Размер текста */
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        /* Логотип и меню вертикально */
+        text-align: center;
+        /* Центрирование текста */
+    }
+
+    nav ul {
+        flex-direction: column;
+        /* Пункты меню вертикально */
+    }
+
+    nav ul li {
+        margin: 10px 0;
+        /* Отступы между пунктами меню */
+    }
+}
+
+/* Стили для футера */
+footer {
+    background-color: rgb(109, 132, 152);
+    /* Цвет фона футера */
+    color: #FFFFFF;
+    /* Белый цвет текста */
+    padding: 20px 0;
+    /* Отступы внутри футера */
+    text-align: center;
+    /* Центрирование текста */
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    /* Тень сверху */
+}
+
+.footer-content {
+    max-width: 1200px;
+    /* Максимальная ширина контента */
+    margin: 0 auto;
+    /* Центрирование контента */
+    padding: 0 20px;
+    /* Отступы по бокам */
+}
+
+.social-links {
+    margin-top: 10px;
+    /* Отступ сверху для социальных ссылок */
+}
+
+.social-links a {
+    color: #FFFFFF;
+    /* Белый цвет текста */
+    text-decoration: none;
+    /* Убираем подчёркивание */
+    margin: 0 10px;
+    /* Отступы между ссылками */
+    font-weight: bold;
+    /* Жирный шрифт */
+    transition: color 0.3s ease;
+    /* Плавное изменение цвета */
+}
+
+.social-links a:hover {
+    color: #a8dbdc;
+    /* Серый цвет при наведении */
+}
+
+/* Убедитесь, что body и html занимают всю высоту экрана */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Flexbox-контейнер */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Минимальная высота равна высоте экрана */
+}
+
+/* Основной контент растягивается, чтобы занять всё свободное пространство */
+main {
+    flex-grow: 1;
+}
+
+/* Стили для футера */
+footer {
+    background-color: rgb(109, 132, 152);
+    color: #FFFFFF;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Остальные стили (шапка, меню, hero и т.д.) */
+/* ... */

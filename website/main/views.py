@@ -1,12 +1,25 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Category, Product
 
 
-def popular_list(request):
-    products = Product.objects.filter(available=True)[:3]
-    return render(request, "main/index/index.html", {"products": products})
+def index(request):
+    return render(request, "main/index.html")
 
 
-def product_detail(request, slug):
-    product = get_object_or_404(Product, slug=slug, available=True)
-    return render(request, "main/product/detail.html", {"product": product})
+def releases(request):
+    return render(request, "main/releases.html")
+
+
+def artists(request):
+    return render(request, "main/artists.html")
+
+
+def events(request):
+    return render(request, "main/events.html")
+
+
+def contacts(request):
+    return render(request, "main/contacts.html")
+
+
+def about(request):
+    return render(request, "main/about.html")
