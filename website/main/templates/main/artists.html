@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Artists - Obrii{% endblock %}
+
+{% block content %}
+<header class="header">
+    <div class="grid-container">
+        {% for artist in artists %}
+        <div class="grid-item">
+            <img src="{% static artist.image %}" alt="{{ artist.name }}" class="artist-img">
+            <h3 class="artist__title">{{ artist.name }}</h3>
+        </div>
+        {% endfor %}
+    </div>
+</header>
+{% endblock %}

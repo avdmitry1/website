@@ -1,200 +1,239 @@
-/* Общие стили для body */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: rgb(83, 107, 129);
-    /* Основной цвет фона */
-    color: #FFFFFF;
-    /* Белый цвет текста */
+@import "./reset.css";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+/* * {
+    border: 1px solid red;
+} */
+
+/* Змінні для базових кольорів */
+:root {
+    --black: #171718;
+    --black-border: #171718;
+    --white: aliceblue;
+    --Cyan-dark: rgb(35, 114, 117);
+    --Cyan-light: #98dae2;
+    --dark-bg: var(--black);
+    --dark-border: var(--black-border);
+    --header-text: var(--white);
+    --accent: var(--Cyan-light)
 }
 
-/* Стили для шапки */
-header {
-    display: flex;
-    justify-content: space-between;
-    /* Логотип слева, меню справа */
-    align-items: center;
-    /* Выравнивание по вертикали */
-    padding: 10px 20px;
-    /* Отступы внутри шапки */
-    background-color: rgb(109, 132, 152);
-    /* Цвет фона шапки */
-}
 
-/* Стили для логотипа */
-.logo img {
-    height: 50px;
-    /* Высота логотипа */
-}
-
-/* Стили для навигационного меню */
-nav {
-    flex-grow: 1;
-    /* Занимает всё свободное пространство */
-}
-
-nav ul {
-    display: flex;
-    justify-content: center;
-    /* Центрирование по горизонтали */
-    align-items: center;
-    /* Центрирование по вертикали */
-    list-style: none;
-    /* Убираем маркеры списка */
-    padding: 0;
-    /* Убираем внутренние отступы */
-    margin: 0;
-    /* Убираем внешние отступы */
-}
-
-nav ul li {
-    margin: 0 10px;
-    /* Отступы между пунктами меню */
-}
-
-nav ul li a {
-    text-decoration: none;
-    /* Убираем подчёркивание ссылок */
-    color: #FFFFFF;
-    /* Белый цвет текста */
-    font-weight: bold;
-    /* Жирный шрифт */
-    transition: color 0.3s ease;
-    /* Плавное изменение цвета */
-}
-
-/* Эффект при наведении на ссылки */
-nav ul li a:hover {
-    color: #a8dbdc;
-    /* Золотой цвет при наведении */
-}
-
-/* Стили для основного контента */
-main {
-    padding: 20px;
-    /* Отступы внутри основного контента */
-    text-align: center;
-    /* Центрирование текста */
-}
-
-/* Стили для секции "Герой" */
-.hero {
-    background-color: rgb(109, 132, 152);
-    /* Цвет фона */
-    padding: 40px 20px;
-    /* Отступы внутри секции */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    /* Тень текста */
-}
-
-.hero h1 {
-    font-size: 3rem;
-    /* Размер заголовка */
-    margin-bottom: 10px;
-    /* Отступ снизу */
-}
-
-.hero p {
-    font-size: 1.2rem;
-    /* Размер текста */
-}
-
-/* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        /* Логотип и меню вертикально */
-        text-align: center;
-        /* Центрирование текста */
-    }
-
-    nav ul {
-        flex-direction: column;
-        /* Пункты меню вертикально */
-    }
-
-    nav ul li {
-        margin: 10px 0;
-        /* Отступы между пунктами меню */
-    }
-}
-
-/* Стили для футера */
-footer {
-    background-color: rgb(109, 132, 152);
-    /* Цвет фона футера */
-    color: #FFFFFF;
-    /* Белый цвет текста */
-    padding: 20px 0;
-    /* Отступы внутри футера */
-    text-align: center;
-    /* Центрирование текста */
-    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-    /* Тень сверху */
-}
-
-.footer-content {
-    max-width: 1200px;
-    /* Максимальная ширина контента */
-    margin: 0 auto;
-    /* Центрирование контента */
-    padding: 0 20px;
-    /* Отступы по бокам */
-}
-
-.social-links {
-    margin-top: 10px;
-    /* Отступ сверху для социальных ссылок */
-}
-
-.social-links a {
-    color: #FFFFFF;
-    /* Белый цвет текста */
-    text-decoration: none;
-    /* Убираем подчёркивание */
-    margin: 0 10px;
-    /* Отступы между ссылками */
-    font-weight: bold;
-    /* Жирный шрифт */
-    transition: color 0.3s ease;
-    /* Плавное изменение цвета */
-}
-
-.social-links a:hover {
-    color: #a8dbdc;
-    /* Серый цвет при наведении */
-}
-
-/* Убедитесь, что body и html занимают всю высоту экрана */
 html,
 body {
-    height: 100%;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: -0.5px;
+    color: var(--dark-bg);
     margin: 0;
     padding: 0;
+    height: 100%;
+    width: 100%;
+
 }
 
-/* Flexbox-контейнер */
-.wrapper {
+html {
+    overflow-y: scroll;
+}
+
+/* Приховати скроллбар за замовчуванням */
+::-webkit-scrollbar {
+    width: 8px;
+    /* Ширина скроллбара */
+    background-color: transparent;
+    /* Прозорий фон */
+}
+
+/* Приховати "ползунок" скроллбара за замовчуванням */
+::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    /* Прозорий ползунок */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    /* Плавна зміна кольору */
+}
+
+/* Відображення скроллбара при прокрутці */
+body.scrolling::-webkit-scrollbar-thumb {
+    background-color: var(--Cyan-light);
+    /* Видимий ползунок */
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--Cyan-dark);
+    /* Цвет фона подвала */
+    padding: 1px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Nav */
+.nav {
+    padding: 20px 0;
+    border-bottom: 2px solid var(--dark-border);
+    background-color: var(--Cyan-dark);
+    color: var(--header-text);
+    letter-spacing: normal;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
+    /* Включаем box-sizing для учета padding и border в ширине */
+}
+
+.nav-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 30px;
+    row-gap: 20px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    color: var(--header-text);
+    font-size: 24px;
+    font-family: 'DM Sans', sans-serif
+}
+
+.logo strong {
+    font-weight: 500;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.nav-list__link {
+    color: var(--header-text);
+    text-decoration: none;
+    position: relative;
+}
+
+.nav-list__link:hover {
+    opacity: 0.8px;
+    transition: 0.2s ease-in;
+}
+
+.nav-list__link--active {
+    position: relative;
+}
+
+.nav-list__link--active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    /* Смещение подчеркивания вниз */
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--Cyan-light);
+}
+
+/* Main content, Header */
+.main-content {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    /* Минимальная высота равна высоте экрана */
-}
-
-/* Основной контент растягивается, чтобы занять всё свободное пространство */
-main {
-    flex-grow: 1;
-}
-
-/* Стили для футера */
-footer {
-    background-color: rgb(109, 132, 152);
-    color: #FFFFFF;
-    padding: 20px 0;
+    background-color: var(--dark-bg);
+    color: var(--header-text);
     text-align: center;
-    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Остальные стили (шапка, меню, hero и т.д.) */
-/* ... */
+.header {
+    padding: 0 40px;
+    min-height: 650px;
+    background-color: var(--dark-bg);
+    /* background-image: url(./../img/200.jpg); */
+    color: var(--header-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header__wrapper {
+    padding: 0 15px;
+    width: 630px;
+}
+
+.header__title {
+    margin-bottom: 100px;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.header__title strong {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.header__title em {
+    font-style: italic;
+    color: var(--accent);
+}
+
+.header__text {
+    margin-bottom: 30px;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.header__text p+p {
+    margin-top: 1em;
+}
+
+
+/* Artists */
+.header-2 {
+    padding: 10 10px;
+    min-height: 650px;
+    background-color: var(--dark-bg);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+    /* Отступ между элементами сетки */
+    padding: 20px;
+    /* Внутренний отступ контейнера */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.grid-item {
+    background-color: var(--black-border);
+    padding: 1px;
+    /* Внутренний отступ элементов сетки */
+    text-align: justify;
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* Обрезаем изображение, чтобы оно заполнило контейнер */
+}
+
+.artist__title {
+    margin-top: 3px;
+    color: var(--header-text);
+}
