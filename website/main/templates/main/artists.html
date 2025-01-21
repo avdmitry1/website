@@ -1,17 +1,24 @@
 {% extends "main/base.html" %}
 {% load static %}
 
+{# Set the page title #}
 {% block title %}Artists - Obrii{% endblock %}
 
+{# Provide the content for the page #}
 {% block content %}
+
 <header class="header">
     <div class="grid-container">
+        {# Loop through the list of artists and display each one #}
         {% for artist in artists %}
         <div class="grid-item">
-            <img src="{% static artist.image %}" alt="{{ artist.name }}" class="artist-img">
-            <h3 class="artist__title">{{ artist.name }}</h3>
+            {# Display the image of the artist #}
+            <img src="{{ artist.photo.url }}" alt="" class="artist-img" />
+            {# Display the name of the artist as a link to their detail page #}
+            <a href="{% url 'main:artist_detail' artist.slug %}" class="artist__title">{{ artist.name }}</a>
         </div>
         {% endfor %}
     </div>
 </header>
+
 {% endblock %}

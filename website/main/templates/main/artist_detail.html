@@ -1,0 +1,34 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}{{ artist.name }} - Obrii{% endblock %}
+
+{% block content %}
+<div class="artist_detail">
+    <div class="artist-container">
+        <img src="{{ artist.photo.url }}" alt="{{ artist.name }}" class="artist-img" />
+    </div>
+    <div class="artist-info">
+        <h1>{{ artist.name }}</h1>
+        <ul class="social-links">
+            {% for platform, link in artist.social_media_links.items %}
+            <li>
+                <a href="{{ link }}" target="_blank" class="social-link">
+                    {% if platform == 'facebook' %}
+                    <i class="fab fa-facebook"></i>
+                    {% elif platform == 'soundcloud' %}
+                    <i class="fab fa-soundcloud"></i>
+                    {% elif platform == 'instagram' %}
+                    <i class="fab fa-instagram"></i>
+                    {% else %}
+                    <i class="fas fa-link"></i>
+                    {% endif %}
+                </a>
+            </li>
+            {% empty %}
+            <p>No social media links available</p>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

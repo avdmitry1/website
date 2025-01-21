@@ -1,59 +1,59 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Obrii{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    {% block extra_head %}{% endblock %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Obrii{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  {% block extra_head %}{% endblock %}
 </head>
 
 <body class="wrapper">
-    <nav class="nav">
-        <div class="container">
-            <div class="nav-row">
-                <a href="{% url 'main:index' %}" class="logo"><strong>Obrii</strong> music</a>
-                <ul class="nav-list">
-                    <li class="nav-list__item">
-                        <a href="{% url 'main:index' %}"
-                            class="nav-list__link {% if request.path == '/' %}nav-list__link--active{% endif %}">Home</a>
-                    </li>
-                    <li class="nav-list__item">
-                        <a href="{% url 'main:artists' %}"
-                            class="nav-list__link {% if request.path == '/artists/' %}nav-list__link--active{% endif %}">Artists</a>
-                    </li>
-                    <li class="nav-list__item">
-                        <a href="{% url 'main:releases' %}"
-                            class="nav-list__link {% if request.path == '/releases/' %}nav-list__link--active{% endif %}">Releases</a>
-                    </li>
-                    <li class="nav-list__item">
-                        <a href="{% url 'main:events' %}"
-                            class="nav-list__link {% if request.path == '/events/' %}nav-list__link--active{% endif %}">Events</a>
-                    </li>
-                    <li class="nav-list__item">
-                        <a href="{% url 'main:contacts' %}"
-                            class="nav-list__link {% if request.path == '/contacts/' %}nav-list__link--active{% endif %}">Contacts</a>
-                    </li>
-                    <li class="nav-list__item">
-                        <a href="{% url 'main:about' %}"
-                            class="nav-list__link {% if request.path == '/about/' %}nav-list__link--active{% endif %}">About</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    {% block content %}
-    <!-- Content -->
-    {% endblock %}
-    <footer class="footer">
-        <p>&copy; 2024 Obrii Music. All rights reserved.</p>
-    </footer>
-    {% block extra_scripts %}
-    <!-- Extra Content -->
-    {% endblock %}
-    <script src="{% static 'js/script.js' %}"></script>
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-row">
+        <a href="{% url 'main:index' %}" class="logo"><strong>Obrii</strong> music</a>
+        <ul class="nav-list">
+          <li class="nav-list__item">
+            <a href="{% url 'main:index' %}"
+              class="nav-list__link {% if request.path == '/' %}nav-list__link--active{% endif %}">Home</a>
+          </li>
+          <li class="nav-list__item">
+            <a href="{% url 'main:artists' %}"
+              class="nav-list__link {% if request.path == '/artists/' %}nav-list__link--active{% endif %}">Artists</a>
+          </li>
+          <li class="nav-list__item">
+            <a href="{% url 'main:releases' %}"
+              class="nav-list__link {% if request.path == '/releases/' %}nav-list__link--active{% endif %}">Releases</a>
+          </li>
+          <li class="nav-list__item">
+            <a href="{% url 'main:events' %}"
+              class="nav-list__link {% if request.path == '/events/' %}nav-list__link--active{% endif %}">Events</a>
+          </li>
+          <li class="nav-list__item">
+            <a href="{% url 'main:contacts' %}"
+              class="nav-list__link {% if request.path == '/contacts/' %}nav-list__link--active{% endif %}">Contacts</a>
+          </li>
+          <li class="nav-list__item">
+            <a href="{% url 'main:about' %}"
+              class="nav-list__link {% if request.path == '/about/' %}nav-list__link--active{% endif %}">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {% block content %}
+  <!-- Content -->
+  {% endblock %}
+  <footer class="footer">
+    <p>&copy; 2024 Obrii Music. All rights reserved.</p>
+  </footer>
+  {% block extra_scripts %}
+  <!-- Extra Content -->
+  {% endblock %}
+  <script src="{% static 'js/script.js' %}"></script>
 </body>
 
 </html>

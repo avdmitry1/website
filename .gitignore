@@ -1,5 +1,75 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyd
+*.log
+*.env
+*.pot
+*.pyc
+*.sqlite3
+
+# Virtual environments
 venv/
+env/
+*.egg-info/
+pip-log.txt
+
+# Django
 db.sqlite3
-__pycache__
-migrations
-static
+instance/
+*.mo
+*.pot
+*.pyc
+
+# Static files
+/static/
+/staticfiles/
+*.css.map
+*.js.map
+
+# Media uploads
+/media/
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+*.bmp
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Logs
+logs/
+*.log
+*.out
+*.err
+
+# Test coverage
+htmlcov/
+coverage.xml
+.cache
+
+# Migrations (if you don't want to track them, optional)
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# Build artifacts
+build/
+dist/
+*.egg
+*.egg-info/
+.installed.cfg
+*.egg-info

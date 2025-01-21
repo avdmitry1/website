@@ -28,7 +28,6 @@ body {
     padding: 0;
     height: 100%;
     width: 100%;
-
 }
 
 html {
@@ -55,7 +54,6 @@ html {
 /* Відображення скроллбара при прокрутці */
 body.scrolling::-webkit-scrollbar-thumb {
     background-color: var(--Cyan-light);
-    /* Видимий ползунок */
 }
 
 .footer {
@@ -63,16 +61,14 @@ body.scrolling::-webkit-scrollbar-thumb {
     bottom: 0;
     width: 100%;
     background-color: var(--Cyan-dark);
-    /* Цвет фона подвала */
-    padding: 1px;
+    padding: 2px;
     text-align: center;
     width: 100%;
     box-sizing: border-box;
 }
 
-/* Nav */
 .nav {
-    padding: 20px 0;
+    padding: 10px 0;
     border-bottom: 2px solid var(--dark-border);
     background-color: var(--Cyan-dark);
     color: var(--header-text);
@@ -87,7 +83,6 @@ body.scrolling::-webkit-scrollbar-thumb {
     max-width: 1200px;
     width: 100%;
     box-sizing: border-box;
-    /* Включаем box-sizing для учета padding и border в ширине */
 }
 
 .nav-row {
@@ -138,34 +133,23 @@ body.scrolling::-webkit-scrollbar-thumb {
     position: absolute;
     left: 0;
     bottom: -2px;
-    /* Смещение подчеркивания вниз */
     display: block;
     height: 2px;
     width: 100%;
     background-color: var(--Cyan-light);
 }
 
-/* Main content, Header */
-.main-content {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--dark-bg);
-    color: var(--header-text);
-    text-align: center;
-}
 
 .header {
-    padding: 0 40px;
-    min-height: 650px;
+    height: 92vh;
     background-color: var(--dark-bg);
     /* background-image: url(./../img/200.jpg); */
+    background-position: center;
     color: var(--header-text);
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 100%;
-    box-sizing: border-box;
 }
 
 .header__wrapper {
@@ -201,39 +185,125 @@ body.scrolling::-webkit-scrollbar-thumb {
 }
 
 
-/* Artists */
-.header-2 {
-    padding: 10 10px;
-    min-height: 650px;
-    background-color: var(--dark-bg);
-}
-
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 10px;
+    gap: 30px;
     /* Отступ между элементами сетки */
-    padding: 20px;
+    padding: 0px;
     /* Внутренний отступ контейнера */
-    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
     box-sizing: border-box;
 }
 
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        /* Меньше колонок на мобильных */
+    }
+}
+
+
 .grid-item {
-    background-color: var(--black-border);
-    padding: 1px;
-    /* Внутренний отступ элементов сетки */
-    text-align: justify;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
 }
 
 .grid-item img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
-    /* Обрезаем изображение, чтобы оно заполнило контейнер */
+}
+
+
+.artist-detail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+}
+
+.artist-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .artist__title {
-    margin-top: 3px;
-    color: var(--header-text);
+    position: absolute;
+    /* Абсолютное позиционирование относительно grid-item */
+    bottom: 5px;
+    /* Отступ снизу */
+    left: 5px;
+    /* Отступ слева */
+    color: aliceblue;
+    /* Цвет текста */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Полупрозрачный фон */
+    padding: 0px 10px;
+    /* Отступы внутри текста */
+    font-size: 16px;
+    /* Размер текста */
+}
+
+
+.artist-photo-container {
+    text-align: center;
+
+}
+
+.artist-img {
+    width: auto;
+    max-height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+
+.artist-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Вместо 'left', это корректное значение */
+    align-items: flex-start;
+    /* Вместо 'normal', это корректное значение */
+    font-size: 2rem;
+    /* Поднимаем выше */
+    margin-top: -340px;
+    /* Регулируйте значение для подъема */
+    color: aliceblue;
+    /* Цвет текста */
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Тень */
+}
+
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 10px;
+}
+
+.social-links li {
+    display: inline;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: var(--Cyan-light);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--Cyan-dark);
 }
