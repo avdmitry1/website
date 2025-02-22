@@ -1,16 +1,15 @@
 from django.urls import path
-from django.urls.resolvers import URLPattern
 from . import views
 
 app_name: str = "main"
 
-urlpatterns: list[URLPattern] = [
-    path("", views.index, name="index"),
-    path("releases/", views.releases, name="releases"),
-    path("artists/", views.artists_view_all, name="artists_all"),
-    path("artists/<slug:slug>/", views.artist_person_page, name="artist_person_page"),
-    path("events/", views.events, name="events"),
-    path("contacts/", views.contacts, name="contacts"),
-    path("about/", views.about, name="about"),
+urlpatterns = [
+    path("", views.index_view, name="index"),
+    path("releases/", views.releases_view, name="releases"),
+    path("artists/", views.artists_view, name="artists"),
+    path("artists/<slug:slug>/", views.artist_detail_view, name="artist_page"),
+    path("events/", views.events_view, name="events"),
+    path("podcast/", views.podcast_view, name="podcast"),
+    path("about/", views.about_view, name="about"),
 ]
 

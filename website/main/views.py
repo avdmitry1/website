@@ -1,42 +1,48 @@
-from typing import Any, Dict
-from django.http import HttpRequest, HttpResponse
+from django.http import Http404, HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, render
-from .models import Artist
+from .models import About, Artist, Release
+from django.views.decorators.cache import cache_page
 
 
-def index(request: HttpRequest) -> HttpResponse:
+def index_view(request: HttpRequest) -> HttpResponse:
     return render(request, "main/index.html")
 
 
-def releases(request: HttpRequest) -> HttpResponse:
-    return render(request, "main/releases.html")
-
-# "----------------------------------------------------------------------------------------------------------"
-
-
-def artists_view_all(request: HttpRequest) -> HttpResponse:
-    """Render the artists page with a list of all artists."""
-    artists = Artist.objects.all()
-    context: Dict[str, Any] = {'artists': artists}
-    return render(request, "main/artists.html", context)
+def releases_view(request: HttpRequest) -> HttpResponse:
+    releases = Release.objects.select_related("artist").all()
+    if not releases.exists():
+        raise Http404("No releases found")
+    return render(request, "main/releases.html", {"releases": releases})
 
 
-def artist_person_page(request: HttpRequest, slug: str) -> HttpResponse:
-    """Render the artist detail page for a specific artist identified by slug."""
-    artist = get_object_or_404(Artist, slug=slug)
-    context: Dict[str, Any] = {'artist': artist}
-    return render(request, 'main/artist_detail.html', context)
-
-# "----------------------------------------------------------------------------------------------------------"
+def release_detail_view(request: HttpRequest, slug: str) -> HttpResponse:
+    release = get_object_or_404(Release.objects.select_related("artist"), slug=slug)
+    return render(request, "main/release_detail.html", {"release": release})
 
 
-def events(request: HttpRequest) -> HttpResponse:
+def artists_view(request: HttpRequest) -> HttpResponse:
+    artists = Artist.objects.filter(is_active=True)
+    return render(
+        request, "main/artists.html", {"artists": artists, "no_artists": not artists}
+    )
+
+
+def artist_detail_view(request: HttpRequest, slug: str) -> HttpResponse:
+    artist = get_object_or_404(
+        Artist.objects.prefetch_related("releases", "social_links"),
+        slug=slug,
+    )
+    return render(request, "main/artist_detail.html", {"artist": artist})
+
+
+def events_view(request: HttpRequest) -> HttpResponse:
     return render(request, "main/events.html")
 
 
-def contacts(request: HttpRequest) -> HttpResponse:
-    return render(request, "main/contacts.html")
+def podcast_view(request: HttpRequest) -> HttpResponse:
+    return render(request, "main/podcast.html")
 
 
-def about(request: HttpRequest) -> HttpResponse:
-    return render(request, "main/about.html")
+@cache_page(60 * 15)
+def about_view(request: HttpRequest) -> HttpResponse:
+    return render(request, "main/about.html", {"about": About.load()})

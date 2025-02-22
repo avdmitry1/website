@@ -1,0 +1,10 @@
+.outer {
+    width: 500px;
+    height: 200px;
+    padding: 10px;
+    background-color: #bbccbb;
+    position: relative;
+    margin: auto;
+    z-index: -2;
+    background-color: hsl(160, 90%, 26%)
+}

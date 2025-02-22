@@ -7,30 +7,50 @@ customizes the admin interface for that model.
 """
 
 from django.contrib import admin
-from .models import Artist, Release, Event, Contact, About, SocialMediaLink
+from .models import Artist, Release, Event, Podcast, About, SocialMediaLink
+from unfold.admin import ModelAdmin
+from unfold.contrib.forms.widgets import WysiwygWidget
+from django.db import models
 
 
-@admin.register(Artist)
-class ArtistAdmin(admin.ModelAdmin):
-    inLines = [SocialMediaLink]
-    list_display = ("name", "slug", "time_created")
-    prepopulated_fields = {"slug": ("name", )}
-
-
-@admin.register(Release)
-class ReleaseAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"slug": ("title", )}
-
-
-class SocialMediaLink(admin.TabularInline):
+class SocialMediaLinkInline(admin.TabularInline):
     model = SocialMediaLink
     extra = 1
 
 
+@admin.register(Artist)
+class ArtistAdmin(ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {
+            "widget": WysiwygWidget,
+        }
+    }
+    inlines = [SocialMediaLinkInline]
+    list_display = ("name", "slug", "time_created")
+    prepopulated_fields = {"slug": ("name",)}
+    search_fields = ("name", "slug")
+
+    def view_on_site(self, obj):
+        return obj.get_absolute_url()
+
+    view_on_site.short_description = "View on Site"
+
+
+@admin.register(Release)
+class ReleaseAdmin(ModelAdmin):
+    search_fields = ("title", "artist")
+    list_display = ("title", "slug", "artist", "release_date", "time_created")
+    prepopulated_fields = {"slug": ("title",)}
+
+
 admin.site.register(Event)
-
-admin.site.register(Contact)
-
 admin.site.register(About)
+
+
+@admin.register(Podcast)
+class PodcastAdmin(ModelAdmin):
+    search_fields = ("name",)
+    list_display = ("name", "link", "time_created")
+
 
 # "----------------------------------------------------------------------------------------------------------"

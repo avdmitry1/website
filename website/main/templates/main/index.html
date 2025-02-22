@@ -1,21 +1,17 @@
-{# The home page of the Obrii website. #}
-{# It extends the base.html template and provides the content for the page #}
-{# in the content block. It also sets the page title. #}
-{% extends "main/base.html" %} 
-{% block title %}Home - Obrii{% endblock %}
+{% extends "main/base.html" %}
+{% block title %}Home - Obrii{% endblock %} {% block content %}
 
-
-{% block content %}
-{# Header section for the homepage, showcasing the theme of the site #}
 <header class="header">
     <div class="header__wrapper">
+        <!-- header content -->
         {% block header_content %}
-        {# Main title of the page#}
+        <!-- header title -->
         <h1 class="header__title">
-            <strong>The pulse of <em>Ukraine</em></strong> in the <em>rhythm</em> of techno
+            <strong>The pulse of <em>Ukraine</em></strong> <br>in the rhythm of
+            <strong><em>techno</em></strong>
         </h1>
+        <!-- header text -->
         <div class="header__text">
-            {# Introductory text of the page#}
             <p>
                 "At the heart of Ukraine's vibrant culture lies a rhythm that pulses
                 with energy, defiance, and hope. We are the sound of a nation that

@@ -1,11 +1,7 @@
 @import "./reset.css";
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 
-/* * {
-    border: 1px solid red;
-} */
 
-/* Змінні для базових кольорів */
 :root {
     --black: #171718;
     --black-border: #171718;
@@ -15,13 +11,12 @@
     --dark-bg: var(--black);
     --dark-border: var(--black-border);
     --header-text: var(--white);
-    --accent: var(--Cyan-light)
+    --accent: var(--Cyan-light);
 }
-
 
 html,
 body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: "DM Sans", sans-serif;
     letter-spacing: -0.5px;
     color: var(--dark-bg);
     margin: 0;
@@ -30,46 +25,10 @@ body {
     width: 100%;
 }
 
-html {
-    overflow-y: scroll;
-}
-
-/* Приховати скроллбар за замовчуванням */
-::-webkit-scrollbar {
-    width: 8px;
-    /* Ширина скроллбара */
-    background-color: transparent;
-    /* Прозорий фон */
-}
-
-/* Приховати "ползунок" скроллбара за замовчуванням */
-::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    /* Прозорий ползунок */
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    /* Плавна зміна кольору */
-}
-
-/* Відображення скроллбара при прокрутці */
-body.scrolling::-webkit-scrollbar-thumb {
-    background-color: var(--Cyan-light);
-}
-
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: var(--Cyan-dark);
-    padding: 2px;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
-}
-
+/* nav */
 .nav {
     padding: 10px 0;
-    border-bottom: 2px solid var(--dark-border);
+    border-bottom: 2px solid rgb(28, 155, 149);
     background-color: var(--Cyan-dark);
     color: var(--header-text);
     letter-spacing: normal;
@@ -77,51 +36,49 @@ body.scrolling::-webkit-scrollbar-thumb {
     box-sizing: border-box;
 }
 
-.container {
-    margin: 0 auto;
+.nav-container {
+    margin: 0;
     padding: 0 15px;
-    max-width: 1200px;
+    /* max-width: 1400px; */
     width: 100%;
     box-sizing: border-box;
 }
 
 .nav-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     align-items: center;
-    column-gap: 30px;
-    row-gap: 20px;
+    column-gap: 100px;
+    row-gap: 50px;
     flex-wrap: wrap;
 }
 
-.logo {
-    color: var(--header-text);
-    font-size: 24px;
-    font-family: 'DM Sans', sans-serif
-}
+
 
 .logo strong {
     font-weight: 500;
 }
 
+
 .nav-list {
     display: flex;
     align-items: center;
     column-gap: 30px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 500;
-    font-family: 'DM Sans', sans-serif;
+    font-family: "DM Sans", sans-serif;
 }
 
 .nav-list__link {
+    cursor: pointer;
     color: var(--header-text);
     text-decoration: none;
     position: relative;
 }
 
 .nav-list__link:hover {
-    opacity: 0.8px;
-    transition: 0.2s ease-in;
+    opacity: 0.8;
+    transition: background-color 0.5s ease;
 }
 
 .nav-list__link--active {
@@ -139,12 +96,11 @@ body.scrolling::-webkit-scrollbar-thumb {
     background-color: var(--Cyan-light);
 }
 
-
+/* header content */
 .header {
-    height: 92vh;
+    height: calc(100vh - (52.8px + 24.8px));
     background-color: var(--dark-bg);
     /* background-image: url(./../img/200.jpg); */
-    background-position: center;
     color: var(--header-text);
     display: flex;
     justify-content: center;
@@ -153,9 +109,10 @@ body.scrolling::-webkit-scrollbar-thumb {
 }
 
 .header__wrapper {
-    padding: 0 15px;
+    padding: 0 40px;
     width: 630px;
 }
+
 
 .header__title {
     margin-bottom: 100px;
@@ -165,7 +122,7 @@ body.scrolling::-webkit-scrollbar-thumb {
 }
 
 .header__title strong {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 700;
 }
 
@@ -184,88 +141,140 @@ body.scrolling::-webkit-scrollbar-thumb {
     margin-top: 1em;
 }
 
+/* Создаем анимацию для градиента */
+@keyframes gradientFlow {
+    0% {
+        background-position: -100% 0;
+        /* Начинаем слева за пределами текста */
+    }
 
+    100% {
+        background-position: 100% 0;
+        /* Заканчиваем справа за пределами текста */
+    }
+}
+.logo {
+    background: linear-gradient(90deg, rgb(208, 255, 255), rgb(72, 209, 204), rgb(236, 255, 255));
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 5s alternate infinite;
+    font-size: 24px;
+    font-family: "DM Sans", sans-serif;
+}
+
+.header__title {
+    background: radial-gradient(circle, rgb(0, 128, 128), rgb(72, 209, 204), rgb(175, 238, 238));
+    /* Градиент */
+    background-size: 200% 100%;
+    /* Увеличиваем размер фона для анимации */
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* Обрезаем фон по тексту */
+    -webkit-text-fill-color: transparent;
+    /* Делаем текст прозрачным */
+    animation: gradientFlow 3s linear infinite;
+    /* Анимация */
+}
+
+/* footer */
+.footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--Cyan-dark);
+    padding: 2px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* grid */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 300px;
     gap: 30px;
-    /* Отступ между элементами сетки */
-    padding: 0px;
-    /* Внутренний отступ контейнера */
     max-width: 1400px;
-    margin: 0 auto;
-    box-sizing: border-box;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 @media (max-width: 768px) {
     .grid-container {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        /* Меньше колонок на мобильных */
+        grid-template-columns: 1fr;
+        /* Один столбец для маленьких экранов */
+        margin-top: 2px;
+        /* Убираем отступ сверху */
+
+    }
+
+    .grid-item {
+        display: flex;
+        box-sizing: content-box;
+        box-shadow: 0 0 0 5px transparent;
+        transition: outline-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+        flex-direction: column;
     }
 }
 
 
-.grid-item {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    width: 100%;
-    height: 300px;
+
+.grid-item:hover {
+    box-shadow: 0px 0px 15px rgb(0, 206, 209);
+    transition: outline-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    flex-direction: column;
 }
 
 .grid-item img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.artist-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 
+.artist-name {
+    position: absolute;
+    margin-top: -20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Полупрозрачный фон */
+    color: aliceblue;
+    /* Белый текст */
+    font-size: 1rem;
+}
+
+
 .artist-detail {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    padding: 20px;
+    align-items: flex-start;
+    padding: 30px;
 }
 
 .artist-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
+    /* Размещение фотографии слева */
+    align-items: flex-start;
+    /* Выравнивание фотографии по верхнему краю */
+    width: 500px;
+    /* Фиксированная ширина контейнера изображения */
+    height: 400px;
+    /* Фиксированная высота контейнера изображения */
+
+}
+
+.artist-container img {
     width: 100%;
-}
-
-.artist__title {
-    position: absolute;
-    /* Абсолютное позиционирование относительно grid-item */
-    bottom: 5px;
-    /* Отступ снизу */
-    left: 5px;
-    /* Отступ слева */
-    color: aliceblue;
-    /* Цвет текста */
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Полупрозрачный фон */
-    padding: 0px 10px;
-    /* Отступы внутри текста */
-    font-size: 16px;
-    /* Размер текста */
-}
-
-
-.artist-photo-container {
-    text-align: center;
-
-}
-
-.artist-img {
-    width: auto;
-    max-height: auto;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    height: 100%;
     object-fit: cover;
 }
+
 
 .artist-info {
     display: flex;
@@ -274,16 +283,13 @@ body.scrolling::-webkit-scrollbar-thumb {
     /* Вместо 'left', это корректное значение */
     align-items: flex-start;
     /* Вместо 'normal', это корректное значение */
-    font-size: 2rem;
+    font-size: 1.5rem;
     /* Поднимаем выше */
-    margin-top: -340px;
-    /* Регулируйте значение для подъема */
     color: aliceblue;
     /* Цвет текста */
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
     /* Тень */
 }
-
 
 .social-links {
     list-style: none;
@@ -299,11 +305,31 @@ body.scrolling::-webkit-scrollbar-thumb {
 
 .social-links a {
     text-decoration: none;
-    color: var(--Cyan-light);
-    font-size: 1.5rem;
+    color: aliceblue;
+    font-size: 1rem;
     transition: color 0.3s ease;
 }
 
 .social-links a:hover {
     color: var(--Cyan-dark);
+}
+
+@media (max-width: 768px) {
+    .artist-detail {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .artist-container {
+        width: 100%;
+        margin-right: 0;
+        /* Убираем отступ справа для маленьких экранов */
+        margin-bottom: 20px;
+        /* Добавляем отступ снизу для изображения */
+    }
+
+    .artist-info {
+        width: 100%;
+        /* Увеличиваем ширину блока информации для мобильных */
+    }
 }
