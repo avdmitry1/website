@@ -28,7 +28,7 @@ body {
 /* nav */
 .nav {
     padding: 10px 0;
-    border-bottom: 2px solid rgb(28, 155, 149);
+    border-bottom: 1px solid rgb(28, 155, 149);
     background-color: var(--Cyan-dark);
     color: var(--header-text);
     letter-spacing: normal;
@@ -153,6 +153,7 @@ body {
         /* Заканчиваем справа за пределами текста */
     }
 }
+
 .logo {
     background: linear-gradient(90deg, rgb(208, 255, 255), rgb(72, 209, 204), rgb(236, 255, 255));
     background-size: 200% 100%;

@@ -7,10 +7,29 @@ customizes the admin interface for that model.
 """
 
 from django.contrib import admin
-from .models import Artist, Release, Event, Podcast, About, SocialMediaLink
+from .models import (
+    Artist,
+    Genre,
+    Release,
+    Event,
+    Podcast,
+    About,
+    SocialMediaLink,
+    Track,
+)
 from unfold.admin import ModelAdmin
 from unfold.contrib.forms.widgets import WysiwygWidget
 from django.db import models
+
+
+class CustomTextWidget(WysiwygWidget):
+    def __init__(self, attrs=None):
+        default_attrs = {
+            "style": "background-color: #f0f0f0; color: #333; font-size: 14px; padding: 10px;",
+        }
+        if attrs:
+            default_attrs.update(attrs)
+        super().__init__(attrs=default_attrs)
 
 
 class SocialMediaLinkInline(admin.TabularInline):
@@ -21,9 +40,7 @@ class SocialMediaLinkInline(admin.TabularInline):
 @admin.register(Artist)
 class ArtistAdmin(ModelAdmin):
     formfield_overrides = {
-        models.TextField: {
-            "widget": WysiwygWidget,
-        }
+        models.TextField: {"widget": CustomTextWidget()},
     }
     inlines = [SocialMediaLinkInline]
     list_display = ("name", "slug", "time_created")
@@ -36,21 +53,62 @@ class ArtistAdmin(ModelAdmin):
     view_on_site.short_description = "View on Site"
 
 
+@admin.register(Genre)
+class GenreAdmin(ModelAdmin):
+    list_display = ("name", "slug")
+    search_fields = ("name",)
+
+
+@admin.register(Track)
+class Track(ModelAdmin):
+    list_display = ("name", "track_number", "release")
+    search_fields = ("name", "release__title")
+    ordering = ("track_number",)
+
+
+
 @admin.register(Release)
 class ReleaseAdmin(ModelAdmin):
-    search_fields = ("title", "artist")
-    list_display = ("title", "slug", "artist", "release_date", "time_created")
+    search_fields = ("title", "artists__name")
+    list_display = ("title", "slug", "get_artists", "release_date", "time_created")
+    list_filtered = ("release_date", "genres")
+    ordering = ("release_date",)
     prepopulated_fields = {"slug": ("title",)}
+    formfield_overrides = {
+        models.TextField: {"widget": CustomTextWidget()},
+    }
+
+    def get_artists(self, obj):
+        return ", ".join([artist.name for artist in obj.artists.all()])
+
+    get_artists.short_description = "Artists"
 
 
-admin.site.register(Event)
-admin.site.register(About)
+@admin.register(Event)
+class EventAdmin(ModelAdmin):
+    search_fields = ("name",)
+    list_display = ("name", "time_created", "date", "location", "event_url")
+    ordering = ("date",)
+    formfield_overrides = {
+        models.TextField: {"widget": CustomTextWidget()},
+    }
+
+
+@admin.register(About)
+class AboutAdmin(ModelAdmin):
+    list_display = ("description", "time_created")
+    formfield_overrides = {
+        models.TextField: {"widget": CustomTextWidget()},
+    }
 
 
 @admin.register(Podcast)
 class PodcastAdmin(ModelAdmin):
     search_fields = ("name",)
     list_display = ("name", "link", "time_created")
+    formfield_overrides = {
+        models.TextField: {"widget": CustomTextWidget()},
+    }
 
 
 # "----------------------------------------------------------------------------------------------------------"
